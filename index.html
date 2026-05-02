@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Douglas Dumpster Rental</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base & Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; color: #333; background-color: #f8f9fa; line-height: 1.5; }
+        h1, h2, h3, h4, .oswald { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+        
+        /* Colors */
+        .text-red { color: #cc0000; }
+        .bg-red { background-color: #cc0000; color: white; }
+        .text-green { color: #1e8e1e; }
+        .bg-green { background-color: #1e8e1e; color: white; }
+        .bg-dark { background-color: #1a1a1a; color: white; }
+        
+        /* Layout Utilities */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .flex { display: flex; }
+        .flex-wrap { flex-wrap: wrap; }
+        .justify-between { justify-content: space-between; }
+        .align-center { align-items: center; }
+        .text-center { text-align: center; }
+        
+        /* Buttons */
+        .btn { padding: 12px 24px; font-weight: bold; border-radius: 4px; text-decoration: none; display: inline-block; border: none; cursor: pointer; text-transform: uppercase; }
+        .btn-green { background: #1e8e1e; color: white; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
+        .btn-green:hover { background: #167016; }
+        .btn-red { background: #cc0000; color: white; }
+        .btn-dark { background: #1a1a1a; color: white; border: 1px solid #333; }
+        .btn-outline { background: transparent; color: white; border: 2px solid white; }
+
+        /* Header */
+        header { background: white; padding: 15px 0; border-bottom: 2px solid #eee; }
+        .logo h1 { font-size: 28px; line-height: 1; margin: 0; color: #1a1a1a; }
+        .logo h1 span { color: #cc0000; display: block; font-size: 16px; font-family: 'Roboto', sans-serif; text-transform: uppercase; font-weight: bold; }
+        
+        /* Added for Blog Link */
+        .header-buttons { display: flex; align-items: center; gap: 20px; }
+        .blog-link { color: #1a1a1a; font-weight: bold; font-family: 'Oswald', sans-serif; font-size: 18px; text-decoration: none; }
+        .blog-link:hover { color: #cc0000; }
+
+        /* Hero Section */
+        .hero { 
+            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1581094288338-2314dddb7ece?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover; 
+            padding: 60px 0; 
+            color: white; 
+        }
+        .hero .flex { gap: 40px; }
+        .hero-left { flex: 1.5; }
+        .hero-left h1 { font-size: 55px; line-height: 1.1; margin-bottom: 15px; }
+        .hero-left p { font-size: 18px; margin-bottom: 20px; max-width: 400px; }
+        .price-tag { margin: 20px 0; }
+        .price-tag span { background: #cc0000; padding: 4px 8px; font-size: 14px; font-weight: bold; text-transform: uppercase; }
+        .price-tag h2 { font-size: 60px; line-height: 1; margin-top: 5px; }
+        .hero-buttons { display: flex; gap: 15px; margin-bottom: 30px; }
+        .hero-features { display: flex; gap: 20px; font-size: 14px; font-weight: bold; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 15px; }
+        
+        .hero-right { flex: 1; background: white; color: #333; border-radius: 4px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .quote-form-header { background: #cc0000; color: white; padding: 20px; text-align: center; }
+        .quote-form-header h3 { font-size: 24px; margin-bottom: 5px; }
+        .quote-form-header p { font-size: 13px; }
+        .quote-form { padding: 20px; }
+        .quote-form input[type="text"], .quote-form select { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px; background: #f9f9f9; }
+        .quote-form .radio-group { margin-bottom: 20px; }
+        .quote-form .radio-group label { display: block; margin-bottom: 8px; font-size: 14px; }
+        .quote-form .btn { width: 100%; font-size: 18px; }
+
+        /* Reviews Section */
+        .reviews { padding: 50px 0; background: #fff; }
+        .section-title { font-size: 32px; margin-bottom: 30px; text-align: center; }
+        .reviews-grid { display: flex; gap: 20px; }
+        .review-cards { flex: 2; display: flex; gap: 15px; }
+        .review-card { border: 1px solid #eee; padding: 20px; border-radius: 4px; flex: 1; }
+        .stars { color: #cc0000; margin-bottom: 10px; }
+        .review-card p { font-size: 14px; font-style: italic; margin-bottom: 10px; }
+        .review-card span { font-size: 12px; color: #777; font-weight: bold; }
+        .review-image { flex: 1; background: url('https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=600&q=80') center/cover; min-height: 200px; }
+
+        /* How it Works */
+        .how-it-works { padding: 50px 0; background: #f8f9fa; }
+        .steps { display: flex; justify-content: space-between; align-items: center; margin-top: 30px; }
+        .step { text-align: center; flex: 1; position: relative; }
+        .step-icon { font-size: 40px; margin-bottom: 10px; }
+        .step-number { background: #cc0000; color: white; width: 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); }
+        .step h4 { font-size: 16px; margin-top: 10px; }
+        .arrow { color: #333; font-size: 20px; }
+        .how-cta { text-align: center; margin-left: 40px; padding-left: 40px; border-left: 2px solid #ddd; }
+
+        /* Use Cases */
+        .use-cases { padding: 50px 0; background: #fff; }
+        .use-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-top: 30px; }
+        .use-card { background: #f4f4f4; border: 1px solid #eee; text-align: center; }
+        .use-card img { width: 100%; height: 120px; object-fit: cover; }
+        .use-card .label { background: #cc0000; color: white; padding: 10px; font-weight: bold; font-size: 14px; text-transform: uppercase; font-family: 'Oswald'; }
+
+        /* Pricing Section */
+        .pricing { padding: 60px 0; }
+        .pricing-grid { display: flex; gap: 30px; align-items: center; }
+        .pricing-left { flex: 1; }
+        .pricing-left h2 { font-size: 40px; line-height: 1.1; margin-bottom: 20px; }
+        .pricing-left ul { list-style: none; }
+        .pricing-left li { margin-bottom: 15px; font-size: 16px; display: flex; align-items: center; gap: 10px; }
+        .pricing-left li i { color: #1e8e1e; font-size: 20px; }
+        .pricing-cards { flex: 2; display: flex; gap: 15px; }
+        .price-card { background: white; color: #333; flex: 1; text-align: center; border-radius: 4px; overflow: hidden; }
+        .price-header { background: #cc0000; color: white; padding: 15px; font-size: 20px; font-weight: bold; }
+        .price-body { padding: 20px; border: 1px solid #eee; border-top: none; }
+        .price-body h2 { font-size: 45px; margin-bottom: 10px; }
+        .price-body h2 sup { font-size: 24px; top: -15px; }
+        .price-body p { font-size: 13px; color: #666; margin-bottom: 20px; min-height: 40px; }
+        .price-body .dumpster-icon { font-size: 40px; color: #333; margin-bottom: 20px; }
+
+        /* Why Choose Us */
+        .features { padding: 50px 0; background: #f8f9fa; text-align: center; }
+        .features-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; margin-top: 40px; }
+        .feature-item i { font-size: 40px; color: #cc0000; margin-bottom: 15px; }
+        .feature-item h4 { font-size: 16px; margin-bottom: 10px; }
+        .feature-item p { font-size: 13px; color: #666; }
+
+        /* Urgency Banner */
+        .urgency { padding: 30px 0; }
+        .urgency .flex { align-items: center; justify-content: center; gap: 30px; }
+        .urgency h2 { font-size: 28px; margin-bottom: 5px; }
+        .urgency i { font-size: 50px; }
+
+        /* FAQ */
+        .faq { padding: 50px 0; background: #fff; text-align: center; }
+        .faq-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 30px; text-align: left; }
+        .faq-item { background: #f8f9fa; padding: 20px; border: 1px solid #eee; position: relative; }
+        .faq-item h4 { font-size: 15px; margin-bottom: 10px; padding-right: 20px; font-family: 'Roboto', sans-serif; font-weight: bold; text-transform: none; }
+        .faq-item p { font-size: 13px; color: #555; }
+        .faq-item i { position: absolute; top: 20px; right: 20px; color: #cc0000; font-size: 12px; }
+
+        /* Footer CTA */
+        .footer-cta { padding: 40px 0; border-bottom: 1px solid #333; }
+        .footer-cta h2 { font-size: 32px; margin-bottom: 5px; }
+        .footer-cta p { color: #aaa; }
+        .footer-buttons { display: flex; gap: 15px; }
+
+        /* Bottom Footer */
+        .bottom-footer { padding: 15px 0; font-size: 12px; }
+        .bottom-footer .flex { justify-content: space-between; align-items: center; }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero .flex, .pricing-grid, .reviews-grid { flex-direction: column; }
+            .how-cta { margin: 20px 0 0 0; padding: 20px 0 0 0; border-left: none; border-top: 2px solid #ddd; }
+            .use-grid, .features-grid, .faq-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-right { width: 100%; max-width: 500px; margin: 0 auto; }
+        }
+        @media (max-width: 768px) {
+            .steps { flex-wrap: wrap; gap: 20px; }
+            .arrow { display: none; }
+            .pricing-cards { flex-direction: column; }
+            .review-cards { flex-direction: column; }
+            .use-grid, .features-grid, .faq-grid { grid-template-columns: 1fr; }
+            .hero-left h1 { font-size: 40px; }
+            .footer-cta .flex { flex-direction: column; gap: 20px; text-align: center; }
+            .urgency .flex { flex-direction: column; text-align: center; }
+            .header-buttons { flex-direction: column; gap: 10px; align-items: flex-end; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container flex justify-between align-center">
+            <div class="logo">
+                <a href="/" style="text-decoration: none; color: inherit;">
+                    <h1 class="oswald">Douglas <span>Dumpster</span></h1>
+                </a>
+            </div>
+            
+            <div class="header-buttons">
+                <a href="/blog/" class="blog-link">OUR BLOG</a>
+                <a href="tel:2194448393" class="btn btn-red"><i class="fa-solid fa-phone"></i> CALL NOW 219-444-8393</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container flex">
+            <div class="hero-left">
+                <h1>DRIVEWAY-SAFE<br>16 YARD DUMPSTERS<br><span class="text-red">DELIVERED TODAY</span></h1>
+                <p>Flat-rate pricing. No hidden fees. Fast delivery in your area.</p>
+                
+                <div class="price-tag">
+                    <span>Starting At</span>
+                    <h2>$380</h2>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-green">GET MY DUMPSTER NOW <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="tel:2194448393" class="btn btn-dark"><i class="fa-solid fa-phone"></i> CALL 219-444-8393</a>
+                </div>
+
+                <div class="hero-features">
+                    <div><i class="fa-regular fa-star"></i> 5-STAR LOCAL SERVICE</div>
+                    <div><i class="fa-solid fa-truck"></i> SAME-DAY DELIVERY</div>
+                    <div><i class="fa-solid fa-dollar-sign"></i> FLAT RATES</div>
+                </div>
+            </div>
+            
+            <div class="hero-right">
+                <div class="quote-form-header">
+                    <h3 class="oswald">GET YOUR FREE QUOTE</h3>
+                    <p>We respond within minutes!</p>
+                </div>
+                
+                <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="quote-form">
+					<input type="hidden" name="form-name" value="contact">
+					
+					<p style="display:none"><label>Don’t fill this out: <input name="bot-field"></label></p>
+
+					<input type="text" name="full_name" placeholder="Full Name" required>
+					<input type="text" name="phone" placeholder="Phone Number" required>
+					<input type="text" name="address" placeholder="Street Address" required>
+					
+					<p style="font-size: 14px; margin-bottom: 5px; font-weight: bold; color: #333;">Dumpster Needed</p>
+					<select name="dumpster_size" required>
+						<option value="">Select an option</option>
+						<option value="16 Yard Dumpster">16 Yard Dumpster</option>
+					</select>
+					
+					<div class="radio-group">
+						<p style="font-size: 14px; margin-bottom: 5px; font-weight: bold; color: #333;">When do you need it?</p>
+						<label><input type="radio" name="timing" value="ASAP" required> ASAP</label>
+						<label><input type="radio" name="timing" value="This Week"> This Week</label>
+						<label><input type="radio" name="timing" value="Planning Ahead"> Planning Ahead</label>
+					</div>
+
+					<button type="submit" class="btn btn-green">GET MY PRICE NOW <i class="fa-solid fa-arrow-right"></i></button>
+					
+					<p style="text-align: center; font-size: 11px; color: #666; margin-top: 10px;">
+						<i class="fa-solid fa-lock"></i> Your information is safe and secure.
+					</p>
+				</form>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews">
+        <div class="container">
+            <h2 class="section-title oswald">TRUSTED BY <span class="text-red">HOMEOWNERS</span> & <span class="text-red">CONTRACTORS</span></h2>
+            <div class="reviews-grid">
+                <div class="review-cards">
+                    <div class="review-card">
+                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <p>"Dropped it off same day and didn't damage my driveway at all. Super easy!"</p>
+                        <span>- Local Customer</span>
+                    </div>
+                    <div class="review-card">
+                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <p>"Best pricing around and very professional. Will definitely use again!"</p>
+                        <span>- Gary, IN</span>
+                    </div>
+                    <div class="review-card">
+                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <p>"Booked online and it was at my house the next morning. Highly recommend!"</p>
+                        <span>- Crown Point, IN</span>
+                    </div>
+                </div>
+                <div class="review-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title oswald">HOW IT <span class="text-red">WORKS</span></h2>
+            <div class="steps flex">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon"><i class="fa-solid fa-phone"></i></div>
+                    <h4 class="oswald">BOOK ONLINE<br>OR CALL</h4>
+                </div>
+                <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                    <h4 class="oswald">WE DELIVER YOUR<br>DUMPSTER</h4>
+                </div>
+                <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon"><i class="fa-solid fa-trash-can"></i></div>
+                    <h4 class="oswald">YOU FILL IT</h4>
+                </div>
+                <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-icon"><i class="fa-solid fa-truck"></i></div>
+                    <h4 class="oswald">WE HAUL IT<br>AWAY</h4>
+                </div>
+                <div class="how-cta">
+                    <a href="#" class="btn btn-green" style="margin-bottom: 10px;">GET STARTED NOW <i class="fa-solid fa-arrow-right"></i></a>
+                    <p class="oswald" style="font-size: 18px;">Or Call <span class="text-red">219-444-8393</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="use-cases">
+        <div class="container">
+            <h2 class="section-title oswald">WHAT <span class="text-red">YOU CAN</span> USE IT FOR</h2>
+            <div class="use-grid">
+                <div class="use-card">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=400&q=80" alt="Home Cleanouts">
+                    <div class="label">HOME CLEANOUTS</div>
+                </div>
+                <div class="use-card">
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=400&q=80" alt="Remodels">
+                    <div class="label">REMODELS</div>
+                </div>
+                <div class="use-card">
+                    <img src="https://images.unsplash.com/photo-1622616654519-5415f3de81c2?auto=format&fit=crop&w=400&q=80" alt="Roofing Jobs">
+                    <div class="label">ROOFING JOBS</div>
+                </div>
+                <div class="use-card">
+                    <img src="https://images.unsplash.com/photo-1616432043562-3671ea2e5242?auto=format&fit=crop&w=400&q=80" alt="Garage Junk">
+                    <div class="label">GARAGE JUNK</div>
+                </div>
+                <div class="use-card">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80" alt="Moving Cleanup">
+                    <div class="label">MOVING CLEANUP</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing bg-dark">
+        <div class="container pricing-grid">
+            <div class="pricing-left">
+                <h2>SIMPLE FLAT-RATE<br><span class="text-red">PRICING</span></h2>
+                <ul>
+                    <li><i class="fa-solid fa-circle-check"></i> Delivery & pickup included</li>
+                    <li><i class="fa-solid fa-circle-check"></i> No hidden fees</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Upfront, honest pricing</li>
+                </ul>
+            </div>
+            <div class="pricing-cards">
+                <div class="price-card">
+                    <div class="price-header oswald">1 DAY</div>
+                    <div class="price-body">
+                        <h2 class="oswald"><sup>$</sup>380</h2>
+                        <p>Great for quick cleanups<br>and small projects</p>
+                        <i class="fa-solid fa-dumpster dumpster-icon"></i>
+                        <a href="#" class="btn btn-green" style="width: 100%;">BOOK NOW</a>
+                    </div>
+                </div>
+                <div class="price-card">
+                    <div class="price-header oswald">3 DAYS</div>
+                    <div class="price-body">
+                        <h2 class="oswald"><sup>$</sup>450</h2>
+                        <p>Perfect for remodels<br>and medium jobs</p>
+                        <i class="fa-solid fa-dumpster dumpster-icon"></i>
+                        <a href="#" class="btn btn-green" style="width: 100%;">BOOK NOW</a>
+                    </div>
+                </div>
+                <div class="price-card">
+                    <div class="price-header oswald">7 DAYS</div>
+                    <div class="price-body">
+                        <h2 class="oswald"><sup>$</sup>550</h2>
+                        <p>Best for large projects<br>and full cleanouts</p>
+                        <i class="fa-solid fa-dumpster dumpster-icon"></i>
+                        <a href="#" class="btn btn-green" style="width: 100%;">BOOK NOW</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title oswald">WHY CHOOSE <span class="text-red">DOUGLAS DUMPSTER?</span></h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <h4 class="oswald">DRIVEWAY-SAFE<br>DUMPSTERS</h4>
+                    <p>No damage to your concrete or driveway.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-stopwatch"></i>
+                    <h4 class="oswald">FAST DROP-OFF<br>& PICKUP</h4>
+                    <p>On-time delivery when you need it.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h4 class="oswald">LOCAL &<br>RELIABLE</h4>
+                    <p>Proudly serving our local community.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-tags"></i>
+                    <h4 class="oswald">TRANSPARENT<br>PRICING</h4>
+                    <p>Flat rates. No surprises. What we say is what you pay.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-thumbs-up"></i>
+                    <h4 class="oswald">EASY<br>BOOKING</h4>
+                    <p>Call or book online in just minutes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="urgency bg-red">
+        <div class="container flex">
+            <div><i class="fa-regular fa-clock"></i></div>
+            <div style="flex: 1;">
+                <h2 class="oswald">LIMITED SAME-DAY AVAILABILITY</h2>
+                <p>Spots fill up quickly. <strong>Book now to lock in your delivery.</strong></p>
+            </div>
+            <div>
+                <a href="#" class="btn btn-dark">RESERVE MY DUMPSTER <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title oswald">FREQUENTLY ASKED <span class="text-red">QUESTIONS</span></h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>What fits in a 16 yard dumpster?</h4>
+                    <p>It holds about 6 pickup truck loads. Perfect for remodels, cleanouts, roofing, furniture, appliances and more.</p>
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="faq-item">
+                    <h4>How fast can you deliver?</h4>
+                    <p>We offer same-day and next-day delivery in most areas. Call now to check availability.</p>
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="faq-item">
+                    <h4>What can't I throw away?</h4>
+                    <p>We do not accept hazardous materials, paint, tires, batteries, or chemicals. Call if you're unsure.</p>
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="faq-item">
+                    <h4>Do I need to be home?</h4>
+                    <p>No! As long as we have clear access, we can drop it off and pick it up without you being there.</p>
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="footer-cta bg-dark">
+        <div class="container flex justify-between align-center">
+            <div>
+                <h2 class="oswald">READY TO <span class="text-red">GET STARTED?</span></h2>
+                <p>Call now or book online in just minutes.</p>
+            </div>
+            <div class="footer-buttons">
+                <a href="#" class="btn btn-green">BOOK MY DUMPSTER NOW</a>
+                <a href="tel:2194448333" class="btn btn-outline"><i class="fa-solid fa-phone"></i> CALL 219-444-8333</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bottom-footer bg-red">
+        <div class="container flex">
+            <div>
+                <i class="fa-solid fa-location-dot"></i> Proudly Serving Northwest Indiana<br>
+                <span style="opacity: 0.8;">Gary | Hammond | Crown Point | Merrillville | Valparaiso & More</span>
+            </div>
+            <div>
+                <i class="fa-solid fa-shield-check"></i> Licensed & Insured
+            </div>
+            <div>
+                <i class="fa-brands fa-facebook"></i> Follow Us on Facebook
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
