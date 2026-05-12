@@ -40,15 +40,14 @@
         .logo h1 { font-size: 28px; line-height: 1; margin: 0; color: #1a1a1a; }
         .logo h1 span { color: #cc0000; display: block; font-size: 16px; font-family: 'Roboto', sans-serif; text-transform: uppercase; font-weight: bold; }
         
-        /* Added for Blog Link */
         .header-buttons { display: flex; align-items: center; gap: 20px; }
         .blog-link { color: #1a1a1a; font-weight: bold; font-family: 'Oswald', sans-serif; font-size: 18px; text-decoration: none; }
         .blog-link:hover { color: #cc0000; }
 
-        /* Hero Section */
+        /* FIXED HERO SECTION - NOW USING YOUR PHOTO */
         .hero { 
             position: relative;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1581094288338-2314dddb7ece?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover; 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.6)), url('background.jpg.jpg') center/cover; 
             padding: 60px 0; 
             color: white; 
         }
@@ -216,7 +215,6 @@
                 
                 <form name="contact" method="POST" data-netlify="true">
 					<input type="hidden" name="form-name" value="contact">
-					
 					<p style="display:none"><label>Don’t fill this out: <input name="bot-field"></label></p>
 
 					<input type="text" name="full_name" placeholder="Full Name" required>
@@ -320,8 +318,8 @@
                     <div class="label">REMODELS</div>
                 </div>
                 <div class="use-card">
-                    <img src="https://images.unsplash.com/photo-1622616654519-5415f3de81c2?auto=format&fit=crop&w=400&q=80" alt="Roofing Jobs">
-                    <div class="label">ROOFING JOBS</div>
+                    <img src="https://images.unsplash.com/photo-1590103306925-fb359f42538b?auto=format&fit=crop&w=400&q=80" alt="Junk Removal and Demo">
+                    <div class="label">JUNK REMOVAL & DEMO</div>
                 </div>
                 <div class="use-card">
                     <img src="https://images.unsplash.com/photo-1616432043562-3671ea2e5242?auto=format&fit=crop&w=400&q=80" alt="Garage Junk">
@@ -474,7 +472,9 @@
                 <i class="fa-solid fa-shield-check"></i> Licensed & Insured
             </div>
             <div>
-                <i class="fa-brands fa-facebook"></i> Follow Us on Facebook
+                <a href="https://www.facebook.com/DouglasDumpster/" target="_blank" style="color: white; text-decoration: none;">
+                    <i class="fa-brands fa-facebook"></i> Follow Us on Facebook
+                </a>
             </div>
         </div>
     </footer>
