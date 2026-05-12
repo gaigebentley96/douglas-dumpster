@@ -44,7 +44,7 @@
         .blog-link { color: #1a1a1a; font-weight: bold; font-family: 'Oswald', sans-serif; font-size: 18px; text-decoration: none; }
         .blog-link:hover { color: #cc0000; }
 
-        /* FIXED HERO SECTION - NOW USING YOUR PHOTO */
+        /* Hero Section */
         .hero { 
             position: relative;
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.6)), url('background.jpg.jpg') center/cover; 
@@ -92,7 +92,7 @@
         .arrow { color: #333; font-size: 20px; }
         .how-cta { text-align: center; margin-left: 40px; padding-left: 40px; border-left: 2px solid #ddd; }
 
-        /* Use Cases */
+        /* Use Cases Section */
         .use-cases { padding: 50px 0; background: #fff; }
         .use-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-top: 30px; }
         .use-card { background: #f4f4f4; border: 1px solid #eee; text-align: center; }
@@ -213,33 +213,33 @@
                     <p>We respond within minutes!</p>
                 </div>
                 
-                <form name="contact" method="POST" data-netlify="true">
-					<input type="hidden" name="form-name" value="contact">
-					<p style="display:none"><label>Don’t fill this out: <input name="bot-field"></label></p>
+                <form name="contact" method="POST" data-netlify="true" class="quote-form">
+                    <input type="hidden" name="form-name" value="contact">
+                    <p style="display:none"><label>Don’t fill this out: <input name="bot-field"></label></p>
 
-					<input type="text" name="full_name" placeholder="Full Name" required>
-					<input type="text" name="phone" placeholder="Phone Number" required>
-					<input type="text" name="address" placeholder="Street Address" required>
-					
-					<p style="font-size: 14px; margin-bottom: 5px; font-weight: bold; color: #333;">Dumpster Needed</p>
-					<select name="dumpster_size" required>
-						<option value="">Select an option</option>
-						<option value="16 Yard Dumpster">16 Yard Dumpster</option>
-					</select>
-					
-					<div class="radio-group">
-						<p style="font-size: 14px; margin-bottom: 5px; font-weight: bold; color: #333;">When do you need it?</p>
-						<label><input type="radio" name="timing" value="ASAP" required> ASAP</label>
-						<label><input type="radio" name="timing" value="This Week"> This Week</label>
-						<label><input type="radio" name="timing" value="Planning Ahead"> Planning Ahead</label>
-					</div>
+                    <input type="text" name="full_name" placeholder="Full Name" required>
+                    <input type="text" name="phone" placeholder="Phone Number" required>
+                    <input type="text" name="address" placeholder="Street Address" required>
+                    
+                    <p style="font-size: 14px; margin-bottom: 5px; font-weight: bold; color: #333;">Dumpster Needed</p>
+                    <select name="dumpster_size" required>
+                        <option value="">Select an option</option>
+                        <option value="16 Yard Dumpster">16 Yard Dumpster</option>
+                    </select>
+                    
+                    <div class="radio-group">
+                        <p style="font-size: 14px; margin-bottom: 5px; font-weight: bold; color: #333;">When do you need it?</p>
+                        <label><input type="radio" name="timing" value="ASAP" required> ASAP</label>
+                        <label><input type="radio" name="timing" value="This Week"> This Week</label>
+                        <label><input type="radio" name="timing" value="Planning Ahead"> Planning Ahead</label>
+                    </div>
 
-					<button type="submit" class="btn btn-green">GET MY PRICE NOW <i class="fa-solid fa-arrow-right"></i></button>
-					
-					<p style="text-align: center; font-size: 11px; color: #666; margin-top: 10px;">
-						<i class="fa-solid fa-lock"></i> Your information is safe and secure.
-					</p>
-				</form>
+                    <button type="submit" class="btn btn-green">GET MY PRICE NOW <i class="fa-solid fa-arrow-right"></i></button>
+                    
+                    <p style="text-align: center; font-size: 11px; color: #666; margin-top: 10px;">
+                        <i class="fa-solid fa-lock"></i> Your information is safe and secure.
+                    </p>
+                </form>
             </div>
         </div>
     </section>
@@ -318,12 +318,12 @@
                     <div class="label">REMODELS</div>
                 </div>
                 <div class="use-card">
-                    <img src="https://images.unsplash.com/photo-1590103306925-fb359f42538b?auto=format&fit=crop&w=400&q=80" alt="Junk Removal and Demo">
+                    <img src="https://images.unsplash.com/photo-1541625602330-2277a4c4b28d?auto=format&fit=crop&w=400&q=80" alt="Demolition">
                     <div class="label">DEMOLITION</div>
                 </div>
                 <div class="use-card">
-                    <img src="https://images.unsplash.com/photo-1616432043562-3671ea2e5242?auto=format&fit=crop&w=400&q=80" alt="Garage Junk">
-                    <div class="label">GARAGE/JUNK REMOVAL</div>
+                    <img src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?auto=format&fit=crop&w=400&q=80" alt="Garage & Junk Removal">
+                    <div class="label">GARAGE & JUNK REMOVAL</div>
                 </div>
                 <div class="use-card">
                     <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80" alt="Moving Cleanup">
